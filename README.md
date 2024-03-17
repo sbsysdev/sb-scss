@@ -33,17 +33,46 @@ $break-points: (
 ```
 
 ```scss
-@include sb.min-width(break-point) {
+@include sb.min-width(<break-point>) {
     ...
 }
-@include sb.min-height(break-point) {
+@include sb.min-height(<break-point>) {
     ...
 }
+// To look up for selector[min-width='-break-point-']
+selector {
+    @include sb.element-min-width(<break-point>) {
+        ...
+    }
+}
+// To look up for selector[min-height='-break-point-']
+selector {
+    @include sb.element-min-height(<break-point>) {
+        ...
+    }
+}
+```
 
-@include sb.element-min-width(break-point) {
+### Theming
+
+add `.theme--<theme>` as css class to a parent `tag`
+
+```scss
+// To be applied to all parent tags with '.theme--<theme>' css class
+@include sb.theme(<theme>) {
     ...
 }
-@include sb.element-min-height(break-point) {
+// To be applied to '.theme--<theme> selector' child tag
+selector {
+    @include sb.theme(<theme>) {
+        ...
+    }
+}
+// To be applied with 'prefers-color-scheme:'
+@include sb.theme-dark {
+    ...
+}
+@include sb.theme-light {
     ...
 }
 ```

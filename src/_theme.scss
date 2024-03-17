@@ -1,0 +1,34 @@
+@mixin theme($theme, $global: null) {
+    @if & == null {
+        @if $global {
+            :global(.theme--#{$theme}) {
+                @content;
+            }
+        } @else {
+            .theme--#{$theme} {
+                @content;
+            }
+        }
+    } @else {
+        @if $global {
+            :global(.theme--#{$theme}) & {
+                @content;
+            }
+        } @else {
+            .theme--#{$theme} & {
+                @content;
+            }
+        }
+    }
+}
+
+@mixin theme-dark {
+    @media (prefers-color-scheme: dark) {
+        @content;
+    }
+}
+@mixin theme-light {
+    @media (prefers-color-scheme: light) {
+        @content;
+    }
+}

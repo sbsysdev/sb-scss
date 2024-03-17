@@ -1,15 +1,17 @@
 @use '../src' as sb;
 
-$prefix: sb;
+header {
+    @include sb.theme(dark) {
+        background-color: blue;
 
-$schemes: (light, dark);
-
-:root {
-    --min-width: 512px;
+        @include sb.min-width(sm) {
+            background-color: white;
+        }
+    }
 }
 
-@include sb.min-width(sm) {
-    header {
+@include sb.theme-dark {
+    body {
         background-color: red;
     }
 }
