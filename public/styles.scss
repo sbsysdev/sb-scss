@@ -1,1 +1,15 @@
 @use '../src' as sb;
+
+$prefix: sb;
+
+$schemes: (light, dark);
+
+:root {
+    --min-width: 512px;
+}
+
+@include sb.min-width(sm) {
+    header {
+        background-color: red;
+    }
+}

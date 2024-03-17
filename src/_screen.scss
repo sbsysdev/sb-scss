@@ -1,0 +1,43 @@
+@use 'sass:map';
+
+$break-points: (
+    6xs: 320px,
+    5xs: 384px,
+    4xs: 448px,
+    3xs: 512px,
+    2xs: 576px,
+    xs: 640px,
+    sm: 704px,
+    md: 768px,
+    lg: 896px,
+    xl: 1024px,
+    2xl: 1152px,
+    3xl: 1280px,
+    4xl: 1408px,
+    5xl: 1536px,
+    6xl: 1664px,
+);
+
+@mixin min-width($break-point, $screens: $break-points) {
+    @media only screen and (min-width: #{map.get($screens, $break-point)}) {
+        @content;
+    }
+}
+
+@mixin min-height($break-point, $screens: $break-points) {
+    @media only screen and (min-height: #{map.get($screens, $break-point)}) {
+        @content;
+    }
+}
+
+@mixin element-min-width($break-point) {
+    &[min-width*='-#{$break-point}-'] {
+        @content;
+    }
+}
+
+@mixin element-min-height($break-point) {
+    &[min-height*='-#{$break-point}-'] {
+        @content;
+    }
+}
