@@ -76,3 +76,46 @@ selector {
     ...
 }
 ```
+
+### Color palette
+
+```scss
+$palette: (
+    <color>: (
+        <variant>: hsl(204, 10%, 98%),
+        ...
+    ),
+    ...
+);
+// Generate css custom properties from palette
+:root {
+    @include sb.generate-palette($palette);
+}
+// Implement css custom properties
+@include sb.bg-color(<color>, <variant>, true);
+@include sb.bg-opacity(1);
+
+@include sb.font-color(<color>, <variant>, true);
+@include sb.font-opacity(1);
+
+@include sb.stroke-color(<color>, <variant>, true);
+@include sb.stroke-opacity(1);
+
+@include sb.fill-color(<color>, <variant>, true);
+@include sb.fill-opacity(1);
+
+@include sb.fill-color(<color>, <variant>, true);
+@include sb.fill-opacity(1);
+
+/* 
+ * <position>: top | bottom | y | left | right | x | all
+ */
+@include sb.border-color(<position> <color> <variant> true, ...);
+@include sb.border-opacity(<position> 1, ...);
+
+/* 
+ * you can omit last parameter on
+ * @include sb.<>-color(..., true); and entirely omit
+ * @include sb.<>-opacity(1); then opacity will be 1 by default
+ */
+```

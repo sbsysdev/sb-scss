@@ -1,17 +1,58 @@
 @use '../src' as sb;
 
+$palette: (
+    light: (
+        light: hsl(204, 10%, 98%),
+        main: hsl(204, 10%, 92%),
+        dark: hsl(204, 10%, 86%),
+    ),
+    dark: (
+        light: hsl(204, 10%, 16%),
+        main: hsl(204, 10%, 10%),
+        dark: hsl(204, 10%, 4%),
+    ),
+    gray: (
+        light: hsl(204, 10%, 70%),
+        main: hsl(204, 10%, 50%),
+        dark: hsl(204, 10%, 30%),
+    ),
+    primary: (
+        light: hsl(200, 95%, 70%),
+        main: hsl(200, 95%, 48%),
+        dark: hsl(200, 95%, 30%),
+    ),
+    secondary: (
+        light: hsl(175, 80%, 60%),
+        main: hsl(175, 80%, 38%),
+        dark: hsl(175, 80%, 20%),
+    ),
+);
+
+:root {
+    @include sb.generate-palette($palette);
+}
+
 header {
+    border-style: solid;
+    border-width: 1px;
+
     @include sb.theme(dark) {
-        background-color: blue;
+        @include sb.bg-color(primary, light);
+        @include sb.font-color(dark, light);
+
+        @include sb.border-color(all light main true);
+        @include sb.border-opacity(all 1);
 
         @include sb.min-width(sm) {
-            background-color: white;
+            @include sb.bg-color(secondary, light);
+            @include sb.font-color(dark, light, true);
         }
     }
 }
 
 @include sb.theme-dark {
     body {
-        background-color: red;
+        @include sb.bg-color(dark, main);
+        @include sb.font-color(light, main);
     }
 }

@@ -1,0 +1,102 @@
+@function color($color, $variant) {
+    @return var(--sb-color-#{$color}-#{$variant});
+}
+
+@mixin bg-color($color, $variant, $skip-opacity: null) {
+    @if not $skip-opacity {
+        --sb-bg-opacity: 1;
+    }
+
+    background-color: hsl(color($color, $variant) / var(--sb-bg-opacity));
+}
+@mixin bg-opacity($opacity: 1) {
+    --sb-bg-opacity: #{$opacity};
+}
+
+@mixin font-color($color, $variant, $skip-opacity: null) {
+    @if not $skip-opacity {
+        --sb-font-opacity: 1;
+    }
+
+    color: hsl(color($color, $variant) / var(--sb-font-opacity));
+}
+@mixin font-opacity($opacity: 1) {
+    --sb-font-opacity: #{$opacity};
+}
+
+@mixin stroke-color($color, $variant, $skip-opacity: null) {
+    @if not $skip-opacity {
+        --sb-stroke-opacity: 1;
+    }
+
+    stroke: hsl(color($color, $variant) / var(--sb-stroke-opacity));
+}
+@mixin stroke-opacity($opacity: 1) {
+    --sb-stroke-opacity: #{$opacity};
+}
+
+@mixin fill-color($color, $variant, $skip-opacity: null) {
+    @if not $skip-opacity {
+        --sb-fill-opacity: 1;
+    }
+
+    fill: hsl(color($color, $variant) / var(--sb-fill-opacity));
+}
+@mixin fill-opacity($opacity: 1) {
+    --sb-fill-opacity: #{$opacity};
+}
+
+@mixin border-color($positions...) {
+    @each $position, $color, $variant, $skip-opacity in $positions {
+        @if $position == y or $position == top or $position == all {
+            @if not $skip-opacity {
+                --sb-opacity-border-top: 1;
+            }
+
+            border-top-color: hsl(color($color, $variant) / var(--sb-opacity-border-top));
+        }
+
+        @if $position == y or $position == bottom or $position == all {
+            @if not $skip-opacity {
+                --sb-opacity-border-bottom: 1;
+            }
+
+            border-bottom-color: hsl(color($color, $variant) / var(--sb-opacity-border-bottom));
+        }
+
+        @if $position == x or $position == left or $position == all {
+            @if not $skip-opacity {
+                --sb-opacity-border-left: 1;
+            }
+
+            border-left-color: hsl(color($color, $variant) / var(--sb-opacity-border-left));
+        }
+
+        @if $position == x or $position == right or $position == all {
+            @if not $skip-opacity {
+                --sb-opacity-border-right: 1;
+            }
+
+            border-right-color: hsl(color($color, $variant) / var(--sb-opacity-border-right));
+        }
+    }
+}
+@mixin border-opacity($positions...) {
+    @each $position, $opacity in $positions {
+        @if $position == y or $position == top or $position == all {
+            --sb-opacity-border-top: #{$opacity};
+        }
+
+        @if $position == y or $position == bottom or $position == all {
+            --sb-opacity-border-bottom: #{$opacity};
+        }
+
+        @if $position == x or $position == left or $position == all {
+            --sb-opacity-border-left: #{$opacity};
+        }
+
+        @if $position == x or $position == right or $position == all {
+            --sb-opacity-border-right: #{$opacity};
+        }
+    }
+}
