@@ -1,0 +1,147 @@
+@function size($size: 0, $variant: 0) {
+    @if $size == 0 or $variant == 0 {
+        @return 0;
+    }
+
+    @return var(--sb-size-#{$size}-#{$variant});
+}
+
+@mixin border($positions...) {
+    @each $position, $size, $variant in $positions {
+        @if not $size {
+            $size: 0;
+        }
+        @if not $variant {
+            $variant: 0;
+        }
+
+        @if $position == y or $position == top or $position == all {
+            border-top-width: size($size, $variant);
+        }
+
+        @if $position == y or $position == bottom or $position == all {
+            border-bottom-width: size($size, $variant);
+        }
+
+        @if $position == x or $position == left or $position == all {
+            border-left-width: size($size, $variant);
+        }
+
+        @if $position == x or $position == right or $position == all {
+            border-right-width: size($size, $variant);
+        }
+    }
+}
+
+@mixin margin($positions...) {
+    @each $position, $size, $variant in $positions {
+        @if not $size {
+            $size: 0;
+        }
+        @if not $variant {
+            $variant: 0;
+        }
+
+        @if $position == y or $position == top or $position == all {
+            margin-top: size($size, $variant);
+        }
+
+        @if $position == y or $position == bottom or $position == all {
+            margin-bottom: size($size, $variant);
+        }
+
+        @if $position == x or $position == left or $position == all {
+            margin-left: size($size, $variant);
+        }
+
+        @if $position == x or $position == right or $position == all {
+            margin-right: size($size, $variant);
+        }
+    }
+}
+
+@mixin padding($positions...) {
+    @each $position, $size, $variant in $positions {
+        @if not $size {
+            $size: 0;
+        }
+        @if not $variant {
+            $variant: 0;
+        }
+
+        @if $position == y or $position == top or $position == all {
+            padding-top: size($size, $variant);
+        }
+
+        @if $position == y or $position == bottom or $position == all {
+            padding-bottom: size($size, $variant);
+        }
+
+        @if $position == x or $position == left or $position == all {
+            padding-left: size($size, $variant);
+        }
+
+        @if $position == x or $position == right or $position == all {
+            padding-right: size($size, $variant);
+        }
+    }
+}
+
+@mixin rounded($positions...) {
+    @each $position, $size, $variant in $positions {
+        @if not $size {
+            $size: 0;
+        }
+        @if not $variant {
+            $variant: 0;
+        }
+
+        @if $position == top or $position == left or $position == top-left or $position == all {
+            border-top-left-radius: size($size, $variant);
+        }
+
+        @if $position == top or $position == right or $position == top-right or $position == all {
+            border-top-right-radius: size($size, $variant);
+        }
+
+        @if $position == bottom or $position == left or $position == bottom-left or $position == all
+        {
+            border-bottom-left-radius: size($size, $variant);
+        }
+
+        @if $position ==
+            bottom or
+            $position ==
+            right or
+            $position ==
+            bottom-right or
+            $position ==
+            all
+        {
+            border-bottom-right-radius: size($size, $variant);
+        }
+    }
+}
+
+@mixin gap($positions...) {
+    @each $position, $size, $variant in $positions {
+        @if not $size {
+            $size: 0;
+        }
+        @if not $variant {
+            $variant: 0;
+        }
+
+        @if $position == all {
+            gap: size($size, $variant);
+        }
+
+        @if $position == x {
+            column-gap: size($size, $variant);
+        }
+
+        @if $position == y {
+            row-gap: size($size, $variant);
+        }
+    }
+}

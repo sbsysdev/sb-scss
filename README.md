@@ -1,11 +1,11 @@
 # SB scss utils
 
-**Installation:**
+**Installation**
 ```bash
 pnpm i -D @sbsys/sb-scss
 ```
 
-**Usage:**
+**Usage**
 ```scss
 @use '@sbsys/sb-scss'  as sb;
 ```
@@ -39,14 +39,14 @@ $break-points: (
 @include sb.min-height(<break-point>) {
     ...
 }
-// To look up for selector[min-width='-break-point-']
-selector {
+// To look up for <selector>[min-width='-break-point-']
+<selector> {
     @include sb.element-min-width(<break-point>) {
         ...
     }
 }
-// To look up for selector[min-height='-break-point-']
-selector {
+// To look up for <selector>[min-height='-break-point-']
+<selector> {
     @include sb.element-min-height(<break-point>) {
         ...
     }
@@ -62,8 +62,8 @@ add `.theme--<theme>` as css class to a parent `tag`
 @include sb.theme(<theme>) {
     ...
 }
-// To be applied to '.theme--<theme> selector' child tag
-selector {
+// To be applied to '.theme--<theme> <selector>' child tag
+<selector> {
     @include sb.theme(<theme>) {
         ...
     }
@@ -80,9 +80,12 @@ selector {
 ### Color palette
 
 ```scss
+/* 
+ * <color>: light | dark | primary | secondary | accent | info | success | warning | danger
+ */
 $palette: (
     <color>: (
-        <variant>: hsl(204, 10%, 98%),
+        <variant>: hsl(...),
         ...
     ),
     ...
@@ -91,6 +94,11 @@ $palette: (
 :root {
     @include sb.generate-palette($palette);
 }
+
+<selector> {
+    <property>: sb.color(<size>, <variant>);
+}
+
 // Implement css custom properties
 @include sb.bg-color(<color>, <variant>, true);
 @include sb.bg-opacity(1);
@@ -118,4 +126,36 @@ $palette: (
  * @include sb.<>-color(..., true); and entirely omit
  * @include sb.<>-opacity(1); then opacity will be 1 by default
  */
+```
+
+### Sizing
+
+```scss
+/* 
+ * <size>: border | sapce | element | screen
+ */
+$sizes: (
+    <size>: (
+        <variant>: 1px,
+        ...
+    ),
+    ...
+);
+// Generate css custom properties from sizes
+:root {
+    @include sb.generate-sizes($sizes);
+}
+
+<selector> {
+    <property>: sb.size(<size>, <variant>);
+}
+
+/* 
+ * <position>: top | bottom | y | left | right | x | all
+ */
+@include sb.border(<position> <size> <variant>, ...);
+@include sb.margin(<position> <size> <variant>, ...);
+@include sb.padding(<position> <size> <variant>, ...);
+@include sb.rounded(<position> <size> <variant>, ...);
+@include sb.gap(<position> <size> <variant>, ...);
 ```

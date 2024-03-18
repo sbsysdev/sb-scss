@@ -7,3 +7,11 @@
         }
     }
 }
+
+@mixin generate-sizes($sizes) {
+    @each $size, $variant in $sizes {
+        @each $variant-key, $variant-value in $variant {
+            --sb-size-#{$size}-#{$variant-key}: #{$variant-value};
+        }
+    }
+}

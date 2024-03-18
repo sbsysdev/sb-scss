@@ -11,7 +11,7 @@ $palette: (
         main: hsl(204, 10%, 10%),
         dark: hsl(204, 10%, 4%),
     ),
-    gray: (
+    base: (
         light: hsl(204, 10%, 70%),
         main: hsl(204, 10%, 50%),
         dark: hsl(204, 10%, 30%),
@@ -28,13 +28,57 @@ $palette: (
     ),
 );
 
+$sizes: (
+    border: (
+        xs: 1px,
+        sm: 2px,
+        md: 3px,
+        lg: 4px,
+        xl: 5px,
+        2xl: 6px,
+        3xl: 7px,
+        4xl: 8px,
+    ),
+    space: (
+        xs: 0.5rem,
+        sm: 1rem,
+        md: 1.5rem,
+        lg: 2rem,
+        xl: 3rem,
+        2xl: 4rem,
+        3xl: 5rem,
+        4xl: 6rem,
+    ),
+    element: (
+        xs: 8rem,
+        sm: 10rem,
+        md: 12rem,
+        lg: 14rem,
+        xl: 18rem,
+        2xl: 22rem,
+        3xl: 26rem,
+        4xl: 30rem,
+    ),
+    screen: (
+        xs: 40rem,
+        sm: 44rem,
+        md: 48rem,
+        lg: 56rem,
+        xl: 64rem,
+        2xl: 72rem,
+        3xl: 80rem,
+        4xl: 88rem,
+    ),
+);
+
 :root {
     @include sb.generate-palette($palette);
+    @include sb.generate-sizes($sizes);
 }
 
 header {
     border-style: solid;
-    border-width: 1px;
+    @include sb.border(all border xs);
 
     @include sb.theme(dark) {
         @include sb.bg-color(primary, light);
@@ -48,6 +92,10 @@ header {
             @include sb.font-color(dark, light, true);
         }
     }
+}
+
+main {
+    width: sb.size(element, xs);
 }
 
 @include sb.theme-dark {
