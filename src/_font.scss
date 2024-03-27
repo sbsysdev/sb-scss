@@ -1,0 +1,9 @@
+@function font($concept, $variant) {
+    @return var(--sb-font-#{$concept}-#{$variant});
+}
+
+@mixin font($concepts...) {
+    @each $concept, $variant in $concepts {
+        font-#{$concept}: font($concept, $variant);
+    }
+}

@@ -15,3 +15,11 @@
         }
     }
 }
+
+@mixin generate-fonts($fonts) {
+    @each $concept, $variant in $fonts {
+        @each $variant-key, $variant-value in $variant {
+            --sb-font-#{$concept}-#{$variant-key}: #{$variant-value};
+        }
+    }
+}

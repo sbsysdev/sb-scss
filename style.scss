@@ -71,9 +71,30 @@ $sizes: (
     ),
 );
 
+$fonts: (
+    weight: (
+        xs: 100,
+        sm: 300,
+        md: 400,
+        lg: 500,
+        xl: 700,
+    ),
+    family: (
+        main: (
+            "'Montserrat'",
+            sans-serif,
+        ),
+        number: (
+            "'Roboto Mono'",
+            monospace,
+        ),
+    ),
+);
+
 :root {
     @include sb.generate-palette($palette);
     @include sb.generate-sizes($sizes);
+    @include sb.generate-fonts($fonts);
 }
 
 * {
@@ -111,6 +132,7 @@ main {
 
 body {
     @include sb.flex;
+    @include sb.font(weight md, family main);
     @include sb.gap(all space sm);
 }
 

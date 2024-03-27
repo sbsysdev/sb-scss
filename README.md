@@ -160,6 +160,31 @@ $sizes: (
 @include sb.gap(<position> <size> <variant>, ...);
 ```
 
+### Fonts
+
+```scss
+/* 
+ * <concept>: weight | family
+ */
+$fonts: (
+    weight: (
+        <variant>: 100,
+        ...
+    ),
+    family: (
+        <variant>: (...),
+    ),
+);
+// Generate css custom properties from fonts
+:root {
+    @include sb.generate-fonts($fonts);
+}
+
+<selector> {
+    @include sb.font(<concept> <variant>, ...);
+}
+```
+
 ### Utilities
 
 ```scss
