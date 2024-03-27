@@ -159,3 +159,18 @@ $sizes: (
 @include sb.rounded(<position> <size> <variant>, ...);
 @include sb.gap(<position> <size> <variant>, ...);
 ```
+
+### Utilities
+
+```scss
+<selector> {
+    @include sb.dots;
+    @include sb.disabled;
+    @include sb.enabled;
+    @include sb.interactable(<time>, <hover>, <active>);
+    @include sb.inset(<position>, <size>, <variant>);
+    @include sb.flex(<direction>, <alignment>, <justify>);
+    @include sb.grid(<size>, <variant>, <sizing>);
+    @include sb.normalize;
+}
+```
