@@ -1,7 +1,6 @@
 {
     "name": "@sbsys/sb-scss",
     "version": "1.0.0",
-    "private": "false",
     "type": "module",
     "description": "scss utils",
     "homepage": "https://github.com/sbsysdev/sb-scss#readme",
