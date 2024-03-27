@@ -76,6 +76,10 @@ $sizes: (
     @include sb.generate-sizes($sizes);
 }
 
+* {
+    @include sb.normalize;
+}
+
 header {
     border-style: solid;
     @include sb.border(all border xs);
@@ -95,7 +99,19 @@ header {
 }
 
 main {
-    width: sb.size(element, xs);
+    @include sb.gap(all space sm);
+    @include sb.grid(element, lg);
+    @include sb.padding(x space sm);
+
+    section {
+        @include sb.bg-color(primary, dark);
+        @include sb.padding(all space sm);
+    }
+}
+
+body {
+    @include sb.flex;
+    @include sb.gap(all space sm);
 }
 
 @include sb.theme-dark {

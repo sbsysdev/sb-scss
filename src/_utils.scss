@@ -1,0 +1,79 @@
+@mixin dots {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+@mixin disabled {
+    pointer-events: none;
+    user-select: none;
+}
+@mixin enabled {
+    pointer-events: unset;
+    user-select: unset;
+}
+
+@mixin interactable($time: 250ms, $hover: 1.01, $active: 0.99) {
+    cursor: pointer;
+    transition: all #{$time} ease-in-out;
+
+    &:hover {
+        transform: scale(#{$hover});
+    }
+
+    &:active {
+        transform: scale(#{$active});
+    }
+}
+
+@mixin inset($position: absolute, $size: 0, $variant: 0) {
+    position: $position;
+
+    bottom: size($size, $variant);
+    left: size($size, $variant);
+    right: size($size, $variant);
+    top: size($size, $variant);
+}
+
+@mixin flex($direction: column, $alignment: none, $justify: none) {
+    display: flex;
+    flex-direction: $direction;
+
+    @if $alignment != none {
+        align-items: $alignment;
+    }
+    @if $justify != none {
+        justify-content: $justify;
+    }
+}
+
+@mixin grid($size: 0, $variant: 0, $sizing: fit) {
+    --sb-item-width: #{size($size, $variant)};
+    --sb-item-min-width: 100%;
+    --sb-item-max-width: 1fr;
+
+    --sb-item-sizing: auto-#{$sizing};
+
+    display: grid;
+    grid-template-columns: repeat(
+        var(--sb-item-sizing),
+        minmax(min(var(--sb-item-min-width), var(--sb-item-width)), var(--sb-item-max-width))
+    );
+}
+
+@mixin normalize {
+    &,
+    &::before,
+    &::after {
+        @include border(all 0);
+        @include margin(all 0);
+        @include padding(all 0);
+        background-color: transparent;
+        border-style: solid;
+        box-sizing: border-box;
+        color: inherit;
+        cursor: inherit;
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+    }
+}
