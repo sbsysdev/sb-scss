@@ -2,29 +2,29 @@
 
 $palette: (
     light: (
-        light: hsl(204, 10%, 98%),
-        main: hsl(204, 10%, 92%),
-        dark: hsl(204, 10%, 86%),
+        100: 98% 0.01 204,
+        200: 88% 0.01 204,
+        300: 78% 0.01 204,
     ),
     dark: (
-        light: hsl(204, 10%, 16%),
-        main: hsl(204, 10%, 10%),
-        dark: hsl(204, 10%, 4%),
+        100: 28% 0.01 204,
+        200: 18% 0.01 204,
+        300: 8% 0.01 204,
     ),
     base: (
-        light: hsl(204, 10%, 70%),
-        main: hsl(204, 10%, 50%),
-        dark: hsl(204, 10%, 30%),
+        100: 68% 0.01 204,
+        200: 58% 0.01 204,
+        300: 48% 0.01 204,
     ),
     primary: (
-        light: hsl(200, 95%, 70%),
-        main: hsl(200, 95%, 48%),
-        dark: hsl(200, 95%, 30%),
+        100: 68% 0.3 200,
+        200: 58% 0.3 200,
+        300: 48% 0.3 200,
     ),
     secondary: (
-        light: hsl(175, 80%, 60%),
-        main: hsl(175, 80%, 38%),
-        dark: hsl(175, 80%, 20%),
+        100: 68% 0.3 175,
+        200: 58% 0.3 175,
+        300: 48% 0.3 175,
     ),
 );
 
@@ -92,53 +92,61 @@ $fonts: (
 );
 
 :root {
+    @include sb.generate-fonts($fonts);
     @include sb.generate-palette($palette);
     @include sb.generate-sizes($sizes);
-    @include sb.generate-fonts($fonts);
 }
 
 * {
     @include sb.normalize;
 }
 
+body {
+    @include sb.flex;
+    @include sb.gap(y space md);
+    min-height: 100vh;
+
+    @include sb.bg-color(light, 100);
+    @include sb.font-color(dark, 300);
+}
+@include sb.theme(dark) {
+    @include sb.bg-color(dark, 300);
+    @include sb.font-color(light, 100);
+}
+
 header {
-    border-style: solid;
-    @include sb.border(all border xs);
+    @include sb.bg-color(primary, 100);
+    @include sb.padding(y space xs, x space sm);
 
     @include sb.theme(dark) {
-        @include sb.bg-color(primary, light);
-        @include sb.font-color(dark, light);
-
-        @include sb.border-color(all light main true);
-        @include sb.border-opacity(all 1);
-
-        @include sb.min-width(sm) {
-            @include sb.bg-color(secondary, light);
-            @include sb.font-color(dark, light, true);
-        }
+        @include sb.bg-color(primary, 300);
     }
 }
 
 main {
-    @include sb.gap(all space sm);
-    @include sb.grid(element, lg);
-    @include sb.padding(x space sm);
+    flex-grow: 1;
 
-    section {
-        @include sb.bg-color(primary, dark);
-        @include sb.padding(all space sm);
+    & > div {
+        @include sb.gap(all space xs);
+        @include sb.grid(element, xl);
+        @include sb.padding(all space xs);
+
+        & > section {
+            @include sb.bg-color(light, 200);
+            @include sb.padding(all space xs);
+
+            @include sb.theme(dark) {
+                @include sb.bg-color(dark, 200);
+            }
+        }
     }
 }
 
-body {
-    @include sb.flex;
-    @include sb.font(weight md, family main);
-    @include sb.gap(all space sm);
-}
+footer {
+    @include sb.bg-color(secondary, 100);
+    @include sb.padding(y space xs, x space sm);
 
-@include sb.theme-dark {
-    body {
-        @include sb.bg-color(dark, main);
-        @include sb.font-color(light, main);
+    @include sb.theme(dark) {
+        @include sb.bg-color(secondary, 300);
     }
 }

@@ -1,9 +1,7 @@
 @mixin generate-palette($palette) {
     @each $color, $variant in $palette {
         @each $variant-key, $variant-value in $variant {
-            --sb-color-#{$color}-#{$variant-key}: #{hue($variant-value)}
-                #{saturation($variant-value)}
-                #{lightness($variant-value)};
+            --sb-color-#{$color}-#{$variant-key}: #{$variant-value};
         }
     }
 }
