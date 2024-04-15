@@ -19,8 +19,8 @@
         }
     },
     "mounts": [
-        "source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,readonly,type=bind",
-        "source=${localEnv:USERPROFILE}/.ssh,target=/home/vscode/.ssh,readonly,type=bind"
+        "source=${localEnv:HOME}/.ssh,target=/home/node/.ssh,readonly,type=bind",
+        "source=${localEnv:USERPROFILE}/.ssh,target=/home/node/.ssh,readonly,type=bind"
     ],
     "postCreateCommand": "git config --global --add safe.directory /workspaces/sb-scss && git config --global core.autocrlf true"
 }
