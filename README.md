@@ -82,10 +82,12 @@ add `.theme--<theme>` as css class to a parent `tag`
 ```scss
 /* 
  * <color>: light | dark | primary | secondary | accent | info | success | warning | danger
+ * 
+ * Color Schema "oklch"
  */
 $palette: (
     <color>: (
-        <variant>: hsl(...),
+        <variant>: <lightness> <chroma> <hue>,
         ...
     ),
     ...
