@@ -31,7 +31,7 @@
         "lib": "src"
     },
     "scripts": {
-        "dev": "vite",
+        "dev": "vite --host 0.0.0.0",
         "build": "vite build",
         "format": "prettier \"**/*.{cjs,html,js,json,md,ts,css,scss,sass}\" --write",
         "preview": "vite preview"
