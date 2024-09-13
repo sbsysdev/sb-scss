@@ -3,11 +3,7 @@
     "dockerComposeFile": "docker-compose.yml",
     "service": "app",
     "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
-    "features": {
-        "ghcr.io/devcontainers/features/git:1": {
-            "version": "latest"
-        }
-    },
+    "features": {},
     "customizations": {
         "vscode": {
             "extensions": [
@@ -19,5 +15,5 @@
         }
     },
     "mounts": ["source=${localEnv:HOME}/.ssh,target=/home/node/.ssh,readonly,type=bind"],
-    "postCreateCommand": "git config --global --add safe.directory /workspaces/sb-scss && git config --global core.autocrlf true"
+    "postCreateCommand": "git config --global --add safe.directory /workspaces/sb-scss && git config --global core.autocrlf input"
 }
