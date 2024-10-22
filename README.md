@@ -87,7 +87,7 @@ add `.theme--<theme>` as css class to a parent `tag`
  */
 $palette: (
     <color>: (
-        <variant>: <lightness> <chroma> <hue>,
+        <variant>: oklch(<lightness> <chroma> <hue>),
         ...
     ),
     ...

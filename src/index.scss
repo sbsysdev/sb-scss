@@ -1,7 +1,7 @@
-@import './screen';
-@import './theme';
-@import './generator';
-@import './color';
-@import './size';
-@import './font';
-@import './utils';
+@forward './screen';
+@forward './theme';
+@forward './generator';
+@forward './color';
+@forward './size';
+@forward './font';
+@forward './util';

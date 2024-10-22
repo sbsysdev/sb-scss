@@ -1,3 +1,5 @@
+@use 'size';
+
 @mixin dots {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -64,9 +66,9 @@
     &,
     &::before,
     &::after {
-        @include border(all 0);
-        @include margin(all 0);
-        @include padding(all 0);
+        @include size.border(all 0);
+        @include size.margin(all 0);
+        @include size.padding(all 0);
         background-color: transparent;
         border-style: solid;
         box-sizing: border-box;

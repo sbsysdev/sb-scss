@@ -1,6 +1,6 @@
 {
     "name": "@sbsys/sb-scss",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "type": "module",
     "description": "scss utils",
     "homepage": "https://github.com/sbsysdev/sb-scss#readme",
@@ -37,11 +37,12 @@
         "preview": "vite preview"
     },
     "peerDependencies": {
-        "sass": "^1.72.0"
+        "sass": "^1.80.3"
     },
     "devDependencies": {
-        "prettier": "^3.2.5",
-        "sass": "^1.72.0",
-        "vite": "^5.1.6"
+        "@types/node": "^22.7.8",
+        "prettier": "^3.3.3",
+        "sass": "^1.80.3",
+        "vite": "^5.4.9"
     }
 }
